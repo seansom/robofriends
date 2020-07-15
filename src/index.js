@@ -5,11 +5,21 @@ import './index.css';
 import 'tachyons';
 
 //  import UI components
-import Hello from './Hello.js';
+import Card from './Card.js';
 import * as serviceWorker from './serviceWorker';
+// destructure ("{}") imports from non-default exporting files
+// i.e. only the variable robots is imported
+import { robots } from './robots.js'
 
 // render the components inside the func
-ReactDOM.render(<Hello greeting={'This is a greeting!'} />, document.getElementById('root'));
+ReactDOM.render(
+    <div>   
+        <Card id={robots[0].id} name={robots[0].name} email={robots[0].email}/>    
+        <Card id={robots[1].id} name={robots[1].name} email={robots[1].email}/>
+        <Card id={robots[2].id} name={robots[2].name} email={robots[2].email}/>
+    </div>
+    , document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
