@@ -5,18 +5,11 @@ import './index.css';
 import 'tachyons';
 
 //  import UI components
-
-import CardList from './CardList.js'
+import App from './App.js'
 import * as serviceWorker from './serviceWorker';
-// destructure ("{}") imports from non-default exporting files
-// i.e. only the variable robots is imported
-import { robots } from './robots.js'
 
 // render the components inside the func
-ReactDOM.render(
-    <CardList robots={robots} />
-    , document.getElementById('root')
-);
+ReactDOM.render(<App /> , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
