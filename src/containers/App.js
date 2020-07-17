@@ -29,12 +29,15 @@ class App extends Component {
 
     render() {
         // filter robot list to what is in the search bar
-        const filteredRobots = this.state.robots.filter(robot => {
-            return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+
+        const {robots, searchfield} = this.state;
+
+        const filteredRobots = robots.filter(robot => {
+            return robot.name.toLowerCase().includes(searchfield.toLowerCase());
         });
 
-
-        if (!this.state.robots.length)  {
+        
+        if (!robots.length)  {
             return <h1>Loading...</h1>
         } else {
             return (
