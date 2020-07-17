@@ -1,9 +1,9 @@
 // destructure ("{}") imports from non-default exporting files
 // i.e. only the variable Component is imported
 import React, { Component } from 'react';
-import CardList from './CardList';
-import SearchBox from './SearchBox';
-import Scroll from './Scroll';
+import CardList from '../components/CardList';
+import SearchBox from '../components/SearchBox';
+import Scroll from '../components/Scroll';
 
 class App extends Component {
     constructor() {
@@ -33,7 +33,8 @@ class App extends Component {
             return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
         });
 
-        if (this.state.robots.length === 0)  {
+
+        if (!this.state.robots.length)  {
             return <h1>Loading...</h1>
         } else {
             return (

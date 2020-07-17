@@ -5,7 +5,7 @@ import './index.css';
 import 'tachyons';
 
 //  import UI components
-import App from './App.js'
+import App from './containers/App.js'
 import * as serviceWorker from './serviceWorker';
 
 // render the components inside the func
