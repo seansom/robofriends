@@ -8,8 +8,17 @@ import 'tachyons';
 import App from './containers/App.js'
 import * as serviceWorker from './serviceWorker';
 
+// Redux import
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { searchRobots } from './reducers';
+
+const store = createStore(searchRobots);
+
+
 // render the components inside the func
-ReactDOM.render(<App /> , document.getElementById('root'));
+// Provider component from redux handles passing store to components
+ReactDOM.render(<Provider store={store}><App /></Provider> , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
