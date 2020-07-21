@@ -10,6 +10,7 @@ import { setSearchField } from '../actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
+    // initializes the props to have searchField
     return {
         // see reducers.js for the value
         searchField: state.searchField
@@ -17,6 +18,7 @@ const mapStateToProps = (state) => {
 } 
 
 const mapDispatchToProps = (dispatch) => {
+    // initializes the props to have onSearchChange
     return {
         onSearchChange: (event) => dispatch(setSearchField(event.target.value))
     }
