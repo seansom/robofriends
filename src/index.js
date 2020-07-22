@@ -10,10 +10,16 @@ import * as serviceWorker from './serviceWorker';
 
 // Redux import
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { searchRobots } from './reducers';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { searchRobots, requestRobots } from './reducers';
 
-const store = createStore(searchRobots);
+// code to create a console logger
+import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
+const logger = createLogger();
+const rootReducer = combineReducers({ searchRobots, requestRobots })
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
 
 
 // render the components inside the func

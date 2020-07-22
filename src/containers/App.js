@@ -6,56 +6,51 @@ import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import ErrorBoundry from '../components/ErrorBoundry';
 
-import { setSearchField } from '../actions';
+import { setSearchField, requestRobots } from '../actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
     // initializes the props to have searchField
     return {
         // see reducers.js for the value
-        searchField: state.searchField
+        //  state has 2 properties, searchRobots and requestRobots
+        searchField: state.searchRobots.searchField,
+        robots: state.requestRobots.robots,
+        isPending: state.requestRobots.isPending,
+        error: state.requestRobots.error
     }
 } 
 
 const mapDispatchToProps = (dispatch) => {
     // initializes the props to have onSearchChange
     return {
-        onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+        onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+        onRequestRobots: (event) => dispatch(requestRobots())
     }
 }
 
 
 
 class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            robots: [],
-        }
-    }
-
 
     // note that React executes some lifecycle functions in a particular order.
     // see https://reactjs.org/docs/react-component.html
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-            .then(users => {this.setState({robots: users})});
+        this.props.onRequestRobots();
     }
 
     
     render() {
         // filter robot list to what is in the search bar
 
-        const { robots } = this.state;
-        const { searchField, onSearchChange } = this.props;
+        const { robots, isPending, searchField, onSearchChange } = this.props;
 
         const filteredRobots = robots.filter(robot => {
             return robot.name.toLowerCase().includes(searchField.toLowerCase());
         });
 
         
-        if (!robots.length)  {
+        if (isPending)  {
             return <h1>Loading...</h1>
         } else {
             return (
