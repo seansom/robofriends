@@ -10,10 +10,10 @@ import { setSearchField, requestRobots } from '../actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
-    // initializes the props to have searchField
+    // initializes the props to have the different state values
     return {
         // see reducers.js for the value
-        //  state has 2 properties, searchRobots and requestRobots
+        // state has 2 properties, searchRobots and requestRobots
         searchField: state.searchRobots.searchField,
         robots: state.requestRobots.robots,
         isPending: state.requestRobots.isPending,

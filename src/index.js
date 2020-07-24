@@ -1,6 +1,7 @@
 // to build and run live-server, use npm start command
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import css file to apply them
 import './index.css';
 import 'tachyons';
 
